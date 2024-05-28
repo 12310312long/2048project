@@ -12,7 +12,7 @@ public class GamePanel extends ListenerPanel {
 
     private GridNumber model;
     private JLabel stepLabel;
-    private int steps;
+    public int steps;
     private final int GRID_SIZE;
 
     public GamePanel(int size) {
@@ -57,35 +57,58 @@ public class GamePanel extends ListenerPanel {
     @Override
     public void doMoveRight() {
         System.out.println("Click VK_RIGHT");
-        this.afterMove();
         this.model.moveRight();
-        this.model.creatgrid();
-        this.updateGridsNumber();
+        if (GridNumber.ischanged) {
+            this.afterMove();
+            this.model.creatgrid();
+            this.updateGridsNumber();
+        }
+        if(!this.model.checkgrids()){
+
+        }
     }
+
     public void doMoveLeft() {
         System.out.println("Click VK_LEFT");
-        this.afterMove();
         this.model.moveLeft();
-        this.model.creatgrid();
-        this.updateGridsNumber();
+        if (GridNumber.ischanged) {
+            this.afterMove();
+            this.model.creatgrid();
+            this.updateGridsNumber();
+        }
+        if(!this.model.checkgrids()){
+
+        }
     }
+
     public void doMoveUp() {
         System.out.println("Click VK_UP");
-        this.afterMove();
         this.model.moveUp();
-        this.model.creatgrid();
-        this.updateGridsNumber();
+        if (GridNumber.ischanged) {
+            this.afterMove();
+            this.model.creatgrid();
+            this.updateGridsNumber();
+        }
+        if(!this.model.checkgrids()){
+
+        }
     }
+
     public void doMoveDown() {
         System.out.println("Click VK_DOWN");
-        this.afterMove();
         this.model.moveDown();
-        this.model.creatgrid();
-        this.updateGridsNumber();
+        if (GridNumber.ischanged) {
+            this.afterMove();
+            this.model.creatgrid();
+            this.updateGridsNumber();
+        }
+        if(!this.model.checkgrids()){
+
+        }
     }
+
     public void afterMove() {
-        this.steps++;
-        this.stepLabel.setText(String.format("Step: %d", this.steps));
+        this.stepLabel.setText(String.format("Score: %d", model.score));
     }
 
     public void setStepLabel(JLabel stepLabel) {
